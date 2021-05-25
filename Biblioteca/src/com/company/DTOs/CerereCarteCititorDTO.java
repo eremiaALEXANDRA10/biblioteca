@@ -23,7 +23,7 @@ public class CerereCarteCititorDTO {
     }
     public ArrayList<Carte> toateCartileImprumutateCititorIstorie(Long idCititor){
         var mapCereri = cerereController.getAll().stream()
-                .filter(e -> e.getIdCititor().equals(idCititor) && e.getOperatie().equals("Imprumut"))
+                .filter(e -> e.getIdCititor().equals(idCititor) && e.getOperatie().equals("Imprumutare"))
                 .collect(Collectors.toMap(
                         Cerere::getIdCarte,
                         Cerere::getIdCititor, (a1, a2) -> a1));
@@ -33,7 +33,7 @@ public class CerereCarteCititorDTO {
     }
     public ArrayList<Carte> toateCartileNereturnateCititor(Long idCititor){
         var mapCereriImprumuturi = cerereController.getAll().stream()
-                .filter(e -> e.getIdCititor().equals(idCititor) && e.getOperatie().equals("Imprumut"))
+                .filter(e -> e.getIdCititor().equals(idCititor) && e.getOperatie().equals("Imprumutare"))
                 .collect(Collectors.toMap(
                         Cerere::getIdCarte,
                         Cerere::getIdCititor, (a1, a2) -> a1));
@@ -56,7 +56,7 @@ public class CerereCarteCititorDTO {
                         Cerere::getIdCititor, (a1, a2) -> a1));
         var mapCereriRestituiri = cerereController.getAll().stream()
                 .filter(e -> e.getIdCititor().equals(idCititor) &&
-                        (e.getOperatie().equals("Renuntare") || e.getOperatie().equals("Imprumut")))
+                        (e.getOperatie().equals("Renuntare") || e.getOperatie().equals("Imprumutare")))
                 .collect(Collectors.toMap(
                         Cerere::getIdCarte,
                         Cerere::getIdCititor, (a1, a2) -> a1));
@@ -79,7 +79,7 @@ public class CerereCarteCititorDTO {
 
     public ArrayList<Carte> toateCartileImprumutateIstorie(){
         var mapCereriImprumuturi = cerereController.getAll().stream()
-                .filter(e ->  e.getOperatie().equals("Imprumut"))
+                .filter(e ->  e.getOperatie().equals("Imprumutare"))
                 .collect(Collectors.toMap(
                         Cerere::getIdCarte,
                         Cerere::getIdCititor, (a1, a2) -> a1));
@@ -101,7 +101,7 @@ public class CerereCarteCititorDTO {
 
     public ArrayList<Carte> toateCartileNereturnate(){
         var mapCereriImprumuturi = cerereController.getAll().stream()
-                .filter(e -> e.getOperatie().equals("Imprumut"))
+                .filter(e -> e.getOperatie().equals("Imprumutare"))
                 .collect(Collectors.toMap(
                         Cerere::getIdCarte,
                         Cerere::getIdCititor, (a1, a2) -> a1));
@@ -125,7 +125,7 @@ public class CerereCarteCititorDTO {
                         Cerere::getIdCititor, (a1, a2) -> a1));
         var mapCereriRestituiri = cerereController.getAll().stream()
                 .filter(e ->
-                        (e.getOperatie().equals("Renuntare") || e.getOperatie().equals("Imprumut")))
+                        (e.getOperatie().equals("Renuntare") || e.getOperatie().equals("Imprumutare")))
                 .collect(Collectors.toMap(
                         Cerere::getIdCarte,
                         Cerere::getIdCititor, (a1, a2) -> a1));
